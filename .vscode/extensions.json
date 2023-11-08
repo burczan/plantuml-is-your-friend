@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "foxundermoon.shell-format",
+    "jebbs.plantuml",
+    "mikestead.dotenv",
+    "ms-azuretools.vscode-docker",
+    "timonwong.shellcheck",
+    "yzhang.markdown-all-in-one"
+  ]
+}

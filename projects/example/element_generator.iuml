@@ -1,0 +1,60 @@
+' modified version of https://stackoverflow.com/a/75402128
+
+!function bold($text)
+!return "**"+ $text +"**"
+!endfunction
+
+!function $get_no_of_tabs($field_name)
+    !local $tab_size = 4
+    !local $tabs = %strlen($field_name)/$tab_size
+    !return $tabs
+!endfunction
+
+!function $get_max_tabs($data)
+    !local $max = 0
+    !foreach $field in $data
+        !local $field_tabs = $get_no_of_tabs($field.name)
+        !if ($max < $field_tabs)
+            !local $max = $field_tabs
+        !endif
+    !endfor
+    !return $max
+!endfunction
+
+!function $get_name_with_tabs($name, $max_tabs)
+    !local $tabs = "\t"
+    !local $no_of_tabs = $get_no_of_tabs($name)
+    !while $max_tabs > $no_of_tabs
+        !local $tabs = $tabs + "\t"
+        !local $no_of_tabs = $no_of_tabs + 1
+    !endwhile
+    !return $name + $tabs
+!endfunction
+
+!procedure create_field($data, $max_tabs)
+    !local $name_with_tabs = $get_name_with_tabs($data.name, $max_tabs)
+    !local $bold_name = %call_user_func("bold", $name_with_tabs)
+    !local $field = $bold_name + $data.type
+    !if %json_key_exists($data, "index")
+        !if $data.index == "primary"
+$field <<PK>> %newline()  --
+        !elseif $data.index == "foreign"
+$field <<FK>> %newline()  --
+        !elseif $data.index == "unique"
+$field <<unique>>
+        !elseif $data.index == "simple"
+$field <<simple>>
+        !endif
+    !else
+$field
+    !endif
+!endprocedure
+
+!procedure $generate($element)
+!local $max_tabs = $get_max_tabs($element.fields)
+$element.type $element.name {
+!foreach $field in $element.fields
+  create_field($field, $max_tabs)
+!endfor
+}
+!endprocedure

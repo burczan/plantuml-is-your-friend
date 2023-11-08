@@ -1,0 +1,38 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam defaultFontName monospaced
+skinparam defaultFontSize 14
+skinparam Padding 3
+skinparam tabSize 4
+skinparam linetype ortho
+hide methods
+
+<style>
+classDiagram {
+  header {
+    fontstyle bold
+  }
+}
+</style>
+
+!include element_generator.iuml
+
+title Example
+
+!$entity01 = %load_json("tables/entity01.json")
+!$entity02 = %load_json("tables/entity02.json")
+!$entity03 = %load_json("tables/entity03.json")
+!$entity04 = %load_json("tables/entity04.json")
+
+$generate($entity01)
+
+$generate($entity02)
+
+$generate($entity03)
+
+$generate($entity04)
+
+Entity01 ||..o{ Entity02
+Entity01 |o..o{ Entity03
+Entity01 |o..o{ Entity04
+@enduml

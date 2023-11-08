@@ -1,0 +1,19 @@
+{
+  "name": "plantuml-is-your-friend",
+  "version": "1.0.0",
+  "author": "Natalia Pospieszyńska",
+  "description": "Easy management of PlantUML diagrams.",
+  "repository": "https://github.com/burczan/plantuml-is-your-friend",
+  "scripts": {
+    "create_new_project": "./create_new_project.sh",
+    "help": "./main.sh --help",
+    "project:check_syntax": "./main.sh --check_syntax",
+    "project:compute_encoded_url": "./main.sh --compute_encoded_url",
+    "project:generate_plantuml_server_url": "./main.sh --generate_server_url",
+    "project:generate_preproc_file": "./main.sh --generate_preproc_file",
+    "project:generate_svg": "./main.sh --generate_svg",
+    "project:regenerate_all": "npm run project:generate_svg && npm run project:compute_encoded_url && npm run project:generate_plantuml_server_url && npm run project:generate_preproc_file",
+    "run_plantuml_server": "./main.sh --run_plantuml_server"
+  },
+  "license": "MIT"
+}

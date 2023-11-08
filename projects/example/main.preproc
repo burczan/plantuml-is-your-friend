@@ -1,0 +1,59 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam defaultFontName monospaced
+skinparam defaultFontSize 14
+skinparam Padding 3
+skinparam tabSize 4
+skinparam linetype ortho
+hide methods
+
+<style>
+classDiagram {
+  header {
+    fontstyle bold
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+title Example
+
+
+entity Entity01 {
+  **e1_id\t\t**number <<generated>> <<PK>> 
+  --
+  **name\t\t**text
+  **description\t**text
+}
+
+entity Entity02 {
+  **e2_id\t\t\t**number <<generated>> <<PK>> 
+  --
+  **e1_id\t\t\t**number <<FK>>
+  **other_details\t**text
+}
+
+entity Entity03 {
+  **e3_id\t\t\t**number <<generated>> <<PK>> 
+  --
+  **e1_id\t\t\t**number <<FK>>
+  **other_details\t**text
+}
+
+entity Entity04 {
+  **e4_id\t\t\t**number <<generated>> <<PK>> 
+  --
+  **e1_id\t\t\t**number <<FK>>
+  **other_details\t**text
+}
+
+Entity01 ||..o{ Entity02
+Entity01 |o..o{ Entity03
+Entity01 |o..o{ Entity04
+@enduml

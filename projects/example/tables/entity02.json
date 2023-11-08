@@ -1,0 +1,19 @@
+{
+  "name": "Entity02",
+  "type": "entity",
+  "fields": [
+    {
+      "name": "e2_id",
+      "type": "number <<generated>>",
+      "index": "primary"
+    },
+    {
+      "name": "e1_id",
+      "type": "number <<FK>>"
+    },
+    {
+      "name": "other_details",
+      "type": "text"
+    }
+  ]
+}
