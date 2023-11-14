@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Representation of an element",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "description": "For full list of allowed elements see https://plantuml.com/class-diagram --> Declaring element",
+      "type": "string"
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Field name.",
+            "type": "string"
+          },
+          "type": {
+            "description": "Type of the field.",
+            "type": "string"
+          },
+          "index": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "type"]
+      }
+    }
+  },
+  "required": ["name", "type", "fields"]
+}
